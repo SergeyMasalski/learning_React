@@ -10,7 +10,7 @@ interface layoutProps {
 
 const Layout: FC<layoutProps> = ({ children }: layoutProps) => {
   return (
-    <div className={classNames(styles)}>
+    <div className={classNames(styles.root)}>
       <Header />
       {children}
       <Footer />

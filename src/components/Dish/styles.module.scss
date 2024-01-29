@@ -1,0 +1,42 @@
+.root {
+  display: grid;
+  grid-template-columns: 150px auto;
+  align-items: center;
+}
+
+.addToBasket {
+  display: flex;
+  align-items: center;
+}
+
+.subDish,
+.addDish {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  color: wheat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.addDish {
+  background-color: rgb(80, 120, 80);
+}
+
+.subDish {
+  background-color: rgb(208, 102, 102);
+}
+
+.isDisabled {
+  background-color: gray;
+
+  &:hover {
+    cursor: default;
+  }
+}
