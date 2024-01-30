@@ -1,8 +1,7 @@
 import { FC, useState } from 'react';
 import Interfaces from '../../constants/interfaces';
-import styles from './styles.module.scss';
-import classNames from 'classnames';
 import Restaurant from '../Restaurant/component';
+import Tabs from '../Tabs/component';
 
 interface restaurantsProps {
   restaurants: Interfaces.Restaurant[];
@@ -13,19 +12,7 @@ const Restaurants: FC<restaurantsProps> = ({ restaurants }) => {
 
   return (
     <div>
-      <div className={classNames(styles.container)}>
-        {restaurants.map((restaurant: Interfaces.Restaurant) => (
-          <button
-            onClick={() => {
-              const selected = restaurants.find(rest => rest.id === restaurant.id);
-              if (selected) setSelectedRestaurant(selected);
-            }}
-            className={classNames(styles.namesRestaurants)}
-          >
-            {restaurant.name}
-          </button>
-        ))}
-      </div>
+      <Tabs restaurants={restaurants} setSelectedRestaurant={setSelectedRestaurant} />
       <Restaurant restaurant={selectedRestaurant} />
     </div>
   );
