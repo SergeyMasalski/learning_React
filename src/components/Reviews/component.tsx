@@ -1,17 +1,19 @@
 import { FC } from 'react';
-import Interfaces from '../../constants/interfaces';
+
 import Review from '../Review/component';
 
 interface reviewsProps {
-  reviews: Interfaces.Review[];
+  reviewIds: string[];
 }
 
-const Reviews: FC<reviewsProps> = ({ reviews }) => {
+const Reviews: FC<reviewsProps> = ({ reviewIds }) => {
+  console.log(reviewIds);
+
   return (
     <ul>
-      {reviews.map(review => (
+      {reviewIds.map(reviewId => (
         <li>
-          <Review textReview={review.text} />
+          <Review reviewId={reviewId} />
         </li>
       ))}
     </ul>

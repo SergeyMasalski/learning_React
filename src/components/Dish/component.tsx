@@ -1,16 +1,22 @@
 import { FC, useState } from 'react';
 import styles from './styles.module.scss';
 import classNames from 'classnames';
+import { useSelector } from 'react-redux';
+import { selectDishById } from '../../redux/entities/dishes/selector';
+import Interfaces from '../../constants/interfaces';
 
 interface dishProps {
-  name: string;
+  dishId: string;
 }
 
-const Dish: FC<dishProps> = ({ name }) => {
+const Dish: FC<dishProps> = ({ dishId }) => {
   let [countDishes, setcountDishes] = useState<number>(0);
+
+  const dish = useSelector<unknown, Interfaces.DishNorm>((state: unknown) => selectDishById(state, dishId));
+
   return (
     <div className={classNames(styles.root)}>
-      <div>{name}</div>
+      <div>{dish.name}</div>
       <div className={classNames(styles.addToBasket)}>
         <button
           onClick={() => {
