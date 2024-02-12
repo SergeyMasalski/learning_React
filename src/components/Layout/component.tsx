@@ -14,6 +14,7 @@ const Layout: FC<layoutProps> = ({ children }: layoutProps) => {
       <Header />
       {children}
       <Footer />
+      <div id="modal-container" className={styles.modal}></div>
     </div>
   );
 };

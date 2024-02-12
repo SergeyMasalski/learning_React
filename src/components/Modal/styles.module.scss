@@ -1,0 +1,39 @@
+.root {
+  background-color: rgba(182, 182, 182, 0.5);
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.name,
+.mail,
+.nameModal {
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+}
+
+.inputs {
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.containerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 30%;
+  height: max-content;
+  background-color: rgb(94, 94, 94);
+  padding: 25px;
+}
+
+.loginButton {
+  box-sizing: border-box;
+  padding: 5px;
+  width: 50%;
+  margin: auto;
+}

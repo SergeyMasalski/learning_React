@@ -19,6 +19,11 @@ namespace Interfaces {
     menu: Interfaces.Ingredient[];
     reviews: Interfaces.Review[];
   }
+
+  export interface User {
+    name: string;
+    mail: string;
+  }
 }
 
 export default Interfaces;
