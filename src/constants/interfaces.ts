@@ -24,6 +24,32 @@ namespace Interfaces {
     name: string;
     mail: string;
   }
+
+  export interface RestaurantsNorm {
+    id: string;
+    name: string;
+    menu: string[];
+    reviews: string[];
+  }
+
+  export interface DishNorm {
+    id: string;
+    name: string;
+    price: number;
+    ingredients: string[];
+  }
+
+  export interface ReviewNorm {
+    id: string;
+    userId: string;
+    text: string;
+    rating: number;
+  }
+
+  export interface UserNorm {
+    id: string;
+    name: string;
+  }
 }
 
 export default Interfaces;

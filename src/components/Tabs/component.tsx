@@ -1,26 +1,22 @@
 import { FC } from 'react';
 import styles from './styles.module.scss';
 import classNames from 'classnames';
-import Interfaces from '../../constants/interfaces';
+
+import Tab from '../Tab/component';
+import { useSelector } from 'react-redux';
+import { selectRestaurantIds } from '../../redux/entities/restaurants/selector';
 
 interface Props {
-  restaurants: Interfaces.Restaurant[];
-  setSelectedRestaurant: (value: Interfaces.Restaurant) => void;
+  setSelectedRestaurant: (value: string) => void;
 }
 
-const Tabs: FC<Props> = ({ restaurants, setSelectedRestaurant }) => {
+const Tabs: FC<Props> = ({ setSelectedRestaurant }) => {
+  const restaurantsIds = useSelector(selectRestaurantIds);
+
   return (
     <div className={classNames(styles.root)}>
-      {restaurants.map((restaurant: Interfaces.Restaurant) => (
-        <button
-          onClick={() => {
-            const selected = restaurants.find(({ id }) => id === restaurant.id);
-            if (selected) setSelectedRestaurant(selected);
-          }}
-          className={classNames(styles.namesRestaurants)}
-        >
-          {restaurant.name}
-        </button>
+      {restaurantsIds.map((restaurantId: string) => (
+        <Tab restaurantId={restaurantId} setSelectedRestaurant={setSelectedRestaurant} />
       ))}
     </div>
   );
