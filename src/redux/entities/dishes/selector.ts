@@ -1,5 +1,7 @@
-export const selectDishModule = (state: any) => state.dish;
+import { State } from '../..';
 
-export const selectDishIds = (state: any) => selectDishModule(state).ids;
+export const selectDishModule = (state: State) => state.dish;
 
-export const selectDishById = (state: any, id: string) => selectDishModule(state).entities[id];
+export const selectDishIds = (state: State) => selectDishModule(state).ids;
+
+export const selectDishById = (state: State, id: string) => selectDishModule(state).entities[id];

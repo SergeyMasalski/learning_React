@@ -1,11 +1,20 @@
 import { combineSlices, configureStore } from '@reduxjs/toolkit';
-import { restaurantSlice } from './entities/restaurants';
-import { dishesSlice } from './entities/dishes';
-import { reviewsSlice } from './entities/reviews';
-import { usersSlice } from './entities/users';
+import { RestaurantState, restaurantSlice } from './entities/restaurants';
+import { DishState, dishesSlice } from './entities/dishes';
+import { ReviewState, reviewsSlice } from './entities/reviews';
+import { UserState, usersSlice } from './entities/users';
+import { CartState, cartSlice } from './ui/cart';
+import { RequestState, requestSlice } from './ui/request';
+
+export interface State {
+  restaurant: RestaurantState;
+  dish: DishState;
+  review: ReviewState;
+  user: UserState;
+  cart: CartState;
+  request: RequestState;
+}
 
 export const store = configureStore({
-  reducer: combineSlices(restaurantSlice, dishesSlice, reviewsSlice, usersSlice),
+  reducer: combineSlices(restaurantSlice, dishesSlice, reviewsSlice, usersSlice, cartSlice, requestSlice),
 });
-
-console.log(store.getState());

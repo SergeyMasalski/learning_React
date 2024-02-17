@@ -7,8 +7,6 @@ interface reviewsProps {
 }
 
 const Reviews: FC<reviewsProps> = ({ reviewIds }) => {
-  console.log(reviewIds);
-
   return (
     <ul>
       {reviewIds.map(reviewId => (

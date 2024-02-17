@@ -1,5 +1,7 @@
-export const selectReviewModule = (state: any) => state.review;
+import { State } from '../..';
 
-export const selectReviewIds = (state: any) => selectReviewModule(state).ids;
+export const selectReviewModule = (state: State) => state.review;
 
-export const selectReviewById = (state: any, id: string) => selectReviewModule(state).entities[id];
+export const selectReviewIds = (state: State) => selectReviewModule(state).ids;
+
+export const selectReviewById = (state: State, id: string) => selectReviewModule(state).entities[id];
