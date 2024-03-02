@@ -1,0 +1,26 @@
+.root {
+  position: absolute;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(175, 175, 175, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.containerModal {
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
+  width: 400px;
+  background-color: rgb(150, 150, 150);
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.buttons {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  margin: auto;
+}

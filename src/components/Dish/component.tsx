@@ -2,11 +2,11 @@ import { Dispatch, FC } from 'react';
 import styles from './styles.module.scss';
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectDishById } from '../../redux/entities/dishes/selector';
-import Interfaces from '../../constants/interfaces';
+
 import { decrementDish, incrementDish, selectDishAnountById } from '../../redux/ui/cart';
 import { State } from '../../redux';
 import { UnknownAction } from '@reduxjs/toolkit';
+import { useGetDishByIdQuery } from '../../redux/servises/api';
 
 interface dishProps {
   dishId: string;
@@ -17,7 +17,11 @@ const Dish: FC<dishProps> = ({ dishId }) => {
 
   const dispatch: Dispatch<UnknownAction> = useDispatch();
 
-  const dish = useSelector<State, Interfaces.DishNorm>((state: State) => selectDishById(state, dishId));
+  const { isLoading, data: dish } = useGetDishByIdQuery(dishId, {
+    skip: !dishId,
+  });
+
+  if (isLoading) return <div>Loading...</div>;
 
   return dish ? (
     <div className={classNames(styles.root)}>

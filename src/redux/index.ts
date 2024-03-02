@@ -5,6 +5,7 @@ import { ReviewState, reviewsSlice } from './entities/reviews';
 import { UserState, usersSlice } from './entities/users';
 import { CartState, cartSlice } from './ui/cart';
 import { RequestState, requestSlice } from './ui/request';
+import { api } from './servises/api';
 
 export interface State {
   restaurant: RestaurantState;
@@ -16,5 +17,6 @@ export interface State {
 }
 
 export const store = configureStore({
-  reducer: combineSlices(restaurantSlice, dishesSlice, reviewsSlice, usersSlice, cartSlice, requestSlice),
+  reducer: combineSlices(restaurantSlice, dishesSlice, reviewsSlice, usersSlice, cartSlice, requestSlice, api),
+  middleware: (getDefaultMiddleWare) => getDefaultMiddleWare().concat(api.middleware),
 });
