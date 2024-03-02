@@ -4,28 +4,39 @@ import Menu from '../Menu/component';
 
 import CreateReviewForm from '../CreateReviewForm/component';
 import AuthorizationContext from '../../contexts/Authorization';
-import { useSelector } from 'react-redux';
-import { selectRestaurantById } from '../../redux/entities/restaurants/selector';
+
 import Reviews from '../Reviews/component';
+import { useGetDishByRestaurantIdQuery, useGetReviewByRestaurantIdQuery, useGetUsersQuery } from '../../redux/servises/api';
 
 interface restaurantProbs {
-  restaurantId: string;
+  restaurant: Interfaces.Restaurant;
 }
 
-const Restaurant: FC<restaurantProbs> = ({ restaurantId }) => {
+const Restaurant: FC<restaurantProbs> = ({ restaurant }) => {
   const { user } = useContext(AuthorizationContext);
-  const restaurant = useSelector<unknown, Interfaces.RestaurantsNorm>((state: unknown) => selectRestaurantById(state, restaurantId));
+  const { isLoading: isLoadingDish, data: restaurantMenu } = useGetDishByRestaurantIdQuery(restaurant.id);
 
-  return (
+  const { isLoading: isLoadingReview, data: reviews } = useGetReviewByRestaurantIdQuery(restaurant.id);
+
+  const { data: users } = useGetUsersQuery();
+
+  return restaurant ? (
     <div>
       <h2>{restaurant.name}</h2>
       <h3>Меню</h3>
-      <Menu menu={restaurant.menu} />
+      {isLoadingDish ? <div>Loading...</div> : <Menu menu={restaurantMenu} />}
       <h3>Отзывы</h3>
-      <Reviews reviewIds={restaurant.reviews} />
-      {user && <CreateReviewForm />}
+      {isLoadingReview ? (
+        <div>Loading...</div>
+      ) : (
+        <Reviews
+          reviews={reviews}
+          users={users}
+        />
+      )}
+      {user && <CreateReviewForm restaurantId={restaurant.id} />}
     </div>
-  );
+  ) : null;
 };
 
 export default Restaurant;

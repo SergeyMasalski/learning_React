@@ -1,19 +1,20 @@
 import { FC } from 'react';
 import classNames from 'classnames';
 import styles from './styles.module.scss';
-import { useSelector } from 'react-redux';
-import { selectRestaurantById } from '../../redux/entities/restaurants/selector';
+
+import Interfaces from '../../constants/interfaces';
 
 interface Props {
-  restaurantId: string;
-  setSelectedRestaurant: (value: string) => void;
+  restaurant: Interfaces.Restaurant;
+  setSelectedRestaurant: (value: Interfaces.Restaurant) => void;
 }
 
-const Tab: FC<Props> = ({ restaurantId, setSelectedRestaurant }) => {
-  const restaurant = useSelector((state: any) => selectRestaurantById(state, restaurantId));
-
+const Tab: FC<Props> = ({ restaurant, setSelectedRestaurant }) => {
   return (
-    <button onClick={() => setSelectedRestaurant(restaurantId)} className={classNames(styles.namesRestaurants)}>
+    <button
+      onClick={() => setSelectedRestaurant(restaurant)}
+      className={classNames(styles.namesRestaurants)}
+    >
       {restaurant.name}
     </button>
   );

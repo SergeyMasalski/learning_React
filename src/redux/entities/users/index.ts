@@ -2,6 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import { normalizedUsers } from '../../../constants/normalized-mock';
 import Interfaces from '../../../constants/interfaces';
 
+export interface UserState {
+  entities: { [key: string]: Interfaces.UserNorm };
+  ids: string[];
+}
+
 export const usersSlice = createSlice({
   name: 'user',
   initialState: {
@@ -10,6 +15,6 @@ export const usersSlice = createSlice({
       return acc;
     }, {}),
     ids: normalizedUsers.map(({ id }) => id),
-  },
+  } as UserState,
   reducers: {},
 });
