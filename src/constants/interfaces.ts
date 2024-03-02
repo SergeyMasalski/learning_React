@@ -8,7 +8,7 @@ namespace Interfaces {
 
   export interface Review {
     id: string;
-    user: string;
+    userId: string;
     text: string;
     rating: number;
   }
@@ -21,8 +21,16 @@ namespace Interfaces {
   }
 
   export interface User {
+    id?: string;
     name: string;
     mail: string;
+  }
+
+  export interface Dish {
+    id: string;
+    name: string;
+    price: number;
+    ingredients: string[];
   }
 
   export interface RestaurantsNorm {

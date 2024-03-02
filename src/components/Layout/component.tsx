@@ -15,6 +15,7 @@ const Layout: FC<layoutProps> = ({ children }: layoutProps) => {
       {children}
       <Footer />
       <div id="modal-container" className={styles.modal}></div>
+      <div id="popover-container" className={styles.popover}></div>
     </div>
   );
 };

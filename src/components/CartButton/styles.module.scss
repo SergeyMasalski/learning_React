@@ -1,0 +1,36 @@
+.rootComponent {
+  display: flex;
+  gap: 5px;
+  align-items: flex-end;
+}
+
+.cartIcon {
+  width: 50px;
+  height: 30px;
+  background: url('./../../assets/cart-icon.png') rgb(234, 68, 68);
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  transition: 0.1s;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.1s;
+  }
+}
+
+.amount {
+  text-align: center;
+  position: relative;
+  left: -18px;
+  top: 7px;
+  background-color: rgb(254, 254, 69);
+  width: 20px;
+  height: 20px;
+  color: rgb(76, 0, 0);
+  border-radius: 50%;
+}

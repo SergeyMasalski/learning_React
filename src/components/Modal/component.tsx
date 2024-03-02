@@ -28,6 +28,7 @@ function reducer(state: Interfaces.User | undefined, { type, payload, setUser, o
     case 'setMail':
       if (!state) return { mail: payload, name: '' };
       return { ...state, mail: payload };
+      2;
 
     default:
       if (!setUser || !onClose) return state;
@@ -47,16 +48,37 @@ const Modal: FC<Props> = ({ onClose }) => {
       <div className={styles.containerForm}>
         <h3 className={styles.nameModal}>Write your name and email</h3>
 
-        <label htmlFor={styles.name} className={styles.name}>
+        <label
+          htmlFor={styles.name}
+          className={styles.name}
+        >
           Name:
         </label>
-        <input type="text" value={form?.name} id={styles.name} className={styles.inputs} onChange={event => dispatch({ type: 'setName', payload: event.target.value })} />
+        <input
+          type="text"
+          value={form?.name}
+          id={styles.name}
+          className={styles.inputs}
+          onChange={(event) => dispatch({ type: 'setName', payload: event.target.value })}
+        />
 
-        <label htmlFor={styles.mail} className={styles.mail}>
+        <label
+          htmlFor={styles.mail}
+          className={styles.mail}
+        >
           Mail:
         </label>
-        <input type="text" id={styles.mail} value={form?.mail} className={styles.inputs} onChange={event => dispatch({ type: 'setMail', payload: event.target.value })} />
-        <button className={styles.loginButton} onClick={() => dispatch({ type: '', payload: '', setUser, onClose })}>
+        <input
+          type="text"
+          id={styles.mail}
+          value={form?.mail}
+          className={styles.inputs}
+          onChange={(event) => dispatch({ type: 'setMail', payload: event.target.value })}
+        />
+        <button
+          className={styles.loginButton}
+          onClick={() => dispatch({ type: '', payload: '', setUser, onClose })}
+        >
           Login
         </button>
       </div>
